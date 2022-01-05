@@ -1,12 +1,14 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
+version='0.0.5'
+
 setup(
-    version = '0.0.2',
+    version = version,
     name = 'sockxml',
-    packages = ['sockxml'],
+    packages = find_packages(),
     description = 'XML Reader for Socket Code Generator',
     long_description = long_description,
     long_description_content_type="text/markdown",
@@ -16,8 +18,8 @@ setup(
     license = 'MIT',
     classifiers=[
         "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
     ],
     install_requires = [],
     download_url = 'https://github.com/rzakaan/sockxml/archive/0.0.1.tar.gz',
