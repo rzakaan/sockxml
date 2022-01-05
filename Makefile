@@ -15,7 +15,9 @@ clean:
 
 build:
 	python setup.py sdist bdist_wheel
-	twine check dist/* && twine upload dist/*
+
+test_publish:
+	python -m twine check dist/* && python -m twine upload --repository testpypi dist/*
 
 publish:
-	python -m twine upload --repository testpypi dist/*
+	python -m twine upload dist/*
