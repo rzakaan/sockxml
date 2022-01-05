@@ -9,9 +9,9 @@ class InterfaceXML:
     def __init__(self):
         self.name=''
         self.description=''
-        self.bitOrder='' 
-        self.inByteOrder='' 
-        self.outByteOrder='' 
+        self.bitorder='' 
+        self.inbyteorder='' 
+        self.outbyteorder='' 
         self.settings='' 
         self.type='' 
         self.mode='' 
@@ -20,9 +20,9 @@ class InterfaceXML:
     def __str__(self):
         v  ='Interface {}\n'.format(self.name)
         v +='|--> description({})\n'.format(self.description)
-        v +='|--> bitOrder({})\n'.format(self.bitOrder)
-        v +='|--> inByteOrder({})\n'.format(self.inByteOrder)
-        v +='|--> outByteOrder({})\n'.format(self.outByteOrder)
+        v +='|--> bitOrder({})\n'.format(self.bitorder)
+        v +='|--> inByteOrder({})\n'.format(self.inbyteorder)
+        v +='|--> outByteOrder({})\n'.format(self.outbyteorder)
         v +='|--> type({})\n'.format(self.type)
         v +='|--> mode({})\n'.format(self.mode)
         v +='|--> settings({})\n'.format(self.settings)
@@ -56,25 +56,25 @@ class EnumXML:
         self.description=''
         self.minvalue=''
         self.maxvalue=''
-        self.format_type='' 
+        self.formattype='' 
         self.values=[]
 
     def __str__(self):
         v  ='Enumeration {}({})\n'.format(self.name, self.size)
         v +='|--> minValue({})\n'.format(self.minvalue)
         v +='|--> maxValue({})\n'.format(self.maxvalue)
-        v +='|--> dataFormatType({})\n'.format(self.format_type)
+        v +='|--> dataFormatType({})\n'.format(self.formattype)
         v +='|--> description({})\n'.format(self.description)
         return v
 
 class EnumValueXML:
     def __init__(self):
-        self.enumName=''
-        self.enumValue=''
+        self.name=''
+        self.value=''
         self.description=''
 
     def __str__(self):
-        v  ='|--> {}({})'.format(self.enumName, self.enumValue)
+        v  ='|--> {}({})'.format(self.name, self.value)
         return v
 
 class RecordXML:
@@ -126,5 +126,5 @@ class SockXMLConfiguration():
         self.datafields: List[DataFieldXML]
         self.enumerations: List[EnumXML] = list()
         self.complextypes: List[RecordXML] = list()
-        self.messageHeader: List[MessageHeaderXML] = list()
+        self.messageHeader: MessageHeaderXML = None
         self.messages: List[MessageXML] = list()
