@@ -10,7 +10,7 @@ class XMLReader:
         self.datafields = []
         self.enumerations = []
         self.complextypes = []
-        self.messageHeader = MessageHeaderXML()
+        self.messageheader = MessageHeaderXML()
         self.messages: List[MessageXML] = []
 
     @staticmethod
@@ -37,7 +37,7 @@ class XMLReader:
             conf.datafields = self.datafields
             conf.enumerations = self.enumerations
             conf.complextypes = self.complextypes
-            conf.messageHeader = self.messageHeader
+            conf.messageheader = self.messageheader
             conf.messages = self.messages
             return conf
 
@@ -59,7 +59,7 @@ class XMLReader:
             self.complextypes = self.__read_complex(element)
         
         elif element.tag == "messageHeader":
-            self.messageHeader = self.__read_message_header(element)
+            self.messageheader = self.__read_message_header(element)
 
         elif element.tag == "messages":
             self.messages = self.__read_message(element)
@@ -135,15 +135,15 @@ class XMLReader:
             item.size = self.get_attr(i, 'size')
             item.minvalue = self.get_attr(i, 'minValue')
             item.maxvalue = self.get_attr(i, 'maxValue')
-            item.format_type = self.get_attr(i, 'dataFormatType')
+            item.formattype = self.get_attr(i, 'dataFormatType')
             item.description = self.get_attr(i, 'description')
             item_list.append(item)
             
             values = i.findall('value')
             for val in values:
                 v = EnumValueXML()
-                v.enumName = self.get_attr(val, 'enumName')
-                v.enumValue = self.get_attr(val, 'enumValue')
+                v.name = self.get_attr(val, 'enumName')
+                v.value = self.get_attr(val, 'enumValue')
                 v.description = self.get_attr(val, 'description')
                 item.values.append(v)
             
