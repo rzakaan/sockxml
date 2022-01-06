@@ -15,4 +15,5 @@
   <img src="https://codecov.io/gh/sockxml/sockxml/branch/master/graph/badge.svg" />
 </a>
 
+
 XML Reader For Socket Code Generator
