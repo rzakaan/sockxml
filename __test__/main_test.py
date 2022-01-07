@@ -1,6 +1,6 @@
 import unittest
 import unittest.mock
-from unittest.mock import Mock()
+from unittest.mock import Mock
 from sockxml.sockxml import XMLReader
 from sockxml.model import *
 
