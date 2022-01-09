@@ -40,17 +40,16 @@ class TestSockXML(unittest.TestCase):
         xml = XMLReader()
         
         # typee check if file is not found
-        data : SockXMLConfiguration = xml.parse(self.NOT_FOUND_FILE_PATH)
-        self.assertEqual(type(data), list)
-        self.assertTrue(len(data) == 0)
+        data = xml.parse(self.NOT_FOUND_FILE_PATH)
+        self.assertEqual(type(data), type(None))
 
         # typee check if fail reading file
         data = xml.parse(self.INCORRET_FILE_PATH)
-        self.assertIsInstance(data, list)
+        self.assertEqual(type(data), type(None))
 
     def test_parse(self):
         xml = XMLReader()
-        data : SockXMLConfiguration = xml.parse(self.FILE_PATH)
+        data = xml.parse(self.FILE_PATH)
         
         # type check
         self.assertIsInstance(data, SockXMLConfiguration)

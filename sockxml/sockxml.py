@@ -43,7 +43,7 @@ class XMLReader:
 
         except Exception as e:
             print("XMLReader::parse()\n{}\n".format(e))
-            return list()
+            return None
 
 
     def __recursive_parse(self, element: ET.Element):
