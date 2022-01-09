@@ -77,6 +77,21 @@ class TestSockXML(unittest.TestCase):
         self.assertEqual(interface.type, 'Tcp')
         self.assertEqual(interface.mode, 'Server')
         self.assertEqual(interface.description, 'descriptions')
+    
+    def test_datafields(self):
+        # type check
+        self.assertIsInstance(self.testdata.datafields, list)
+        
+        # member chechk
+        datafield: DataFieldXML = self.testdata.datafields[0]
+        self.assertEqual(datafield.name, 'sInt8Type')
+        self.assertEqual(datafield.type, 'uint')
+        self.assertEqual(datafield.formattype, 'bnr')
+        self.assertEqual(datafield.minvalue, '-128')
+        self.assertEqual(datafield.maxvalue, '127')
+        self.assertEqual(datafield.size, 8)
+        self.assertEqual(datafield.resolution, '')
+        self.assertEqual(datafield.description, '')
         
 if __name__ == "__main__":
     unittest.main()
