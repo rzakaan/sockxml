@@ -1,9 +1,15 @@
 from setuptools import find_packages, setup
+import subprocess, os
 
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
-version='0.0.5'
+version= subprocess.run(["git", "describe", "--tags"], stdout=subprocess.PIPE).stdout.decode("utf-8").strip()
+assert "." in version
+
+assert os.path.isfile('sockxml/version.py')
+with open('sockxml/VERSION', 'w') as f:
+    f.write(f"{version}\n")
 
 setup(
     version = version,
