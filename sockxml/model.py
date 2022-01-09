@@ -37,7 +37,7 @@ class DataFieldXML:
         self.minvalue=''
         self.maxvalue=''
         self.type='' 
-        self.formattype='' 
+        self.format='' 
         self.resolution=''
     
     def __str__(self):
@@ -45,7 +45,7 @@ class DataFieldXML:
         v +='|--> minvalue({})\n'.format(self.minvalue)
         v +='|--> maxvalue({})\n'.format(self.maxvalue)
         v +='|--> type({})\n'.format(self.type)
-        v +='|--> formattype({})\n'.format(self.formattype)
+        v +='|--> formattype({})\n'.format(self.format)
         v +='|--> resolution({})\n'.format(self.resolution)
         return v
 

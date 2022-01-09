@@ -86,7 +86,7 @@ class TestSockXML(unittest.TestCase):
         datafield: DataFieldXML = self.testdata.datafields[0]
         self.assertEqual(datafield.name, 'sInt8Type')
         self.assertEqual(datafield.type, 'uint')
-        self.assertEqual(datafield.formattype, 'bnr')
+        self.assertEqual(datafield.format, 'bnr')
         self.assertEqual(datafield.minvalue, '-128')
         self.assertEqual(datafield.maxvalue, '127')
         self.assertEqual(datafield.size, 8)

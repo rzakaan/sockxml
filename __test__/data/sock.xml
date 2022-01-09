@@ -7,12 +7,12 @@
     </interfaces>
     
     <datafields name='datafield'>
-        <data dataFormatType='bnr' dataType='uint' name='sInt8Type'  minValue='-128' maxValue='127' size='8' resolution='' description='' />
-        <data dataFormatType='bnr' dataType='uint' name='sInt16Type' minValue='-32768' maxValue='32767' size='16' resolution='' description='' />
-        <data dataFormatType='bnr' dataType='uint' name='sInt32Type' minValue='-2147483648' maxValue='2147483647' size='32' resolution='' description='' />
-        <data dataFormatType='bnr' dataType='uint' name='sInt64Type' minValue='0' maxValue='127' size='64' resolution='' description='' />
-        <data dataFormatType='ieee754' dataType='float' name='float32Type' minValue='-1000' maxValue='1000' size='32' resolution='' description='' />
-        <data dataFormatType='ieee754' dataType='float' name='float64Type' minValue='-1000' maxValue='1000' size='64' resolution='' description='' />
+        <data type='uint'  format='bnr' name='sInt8Type'  minValue='-128' maxValue='127' size='8' resolution='' description='' />
+        <data type='uint'  format='bnr' name='sInt16Type' minValue='-32768' maxValue='32767' size='16' resolution='' description='' />
+        <data type='uint'  format='bnr' name='sInt32Type' minValue='-2147483648' maxValue='2147483647' size='32' resolution='' description='' />
+        <data type='uint'  format='bnr' name='sInt64Type' minValue='0' maxValue='127' size='64' resolution='' description='' />
+        <data type='float' format='ieee754' name='float32Type' minValue='-1000' maxValue='1000' size='32' resolution='' description='' />
+        <data type='float' format='ieee754' name='float64Type' minValue='-1000' maxValue='1000' size='64' resolution='' description='' />
     </datafields>
     
     <enumerations name='enumeration'>
