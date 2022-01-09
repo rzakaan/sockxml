@@ -23,7 +23,7 @@ class XMLReader:
     @staticmethod
     def get_attr(element: ET.Element, attrib: str):
         if XMLReader.attr_exists(element, attrib):
-            return element.attrib[attrib]
+            return element.attrib[attrib].strip()
         return ''
 
     def parse(self, file_name: str):
@@ -89,7 +89,7 @@ class XMLReader:
             # set interface attributes
             item = InterfaceXML()
             item.name = XMLReader.get_attr(i,'name')
-            item.bitOrder = XMLReader.get_attr(i, 'bitOrder')
+            item.bitorder = XMLReader.get_attr(i, 'bitOrder')
             item.inbyteorder = XMLReader.get_attr(i, 'inByteOrder')
             item.outbyteorder = XMLReader.get_attr(i, 'outByteOrder')
             item.settings = XMLReader.get_attr(i, 'settings')

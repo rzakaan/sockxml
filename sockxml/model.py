@@ -20,9 +20,9 @@ class InterfaceXML:
     def __str__(self):
         v  ='Interface {}\n'.format(self.name)
         v +='|--> description({})\n'.format(self.description)
-        v +='|--> bitOrder({})\n'.format(self.bitorder)
-        v +='|--> inByteOrder({})\n'.format(self.inbyteorder)
-        v +='|--> outByteOrder({})\n'.format(self.outbyteorder)
+        v +='|--> bitorder({})\n'.format(self.bitorder)
+        v +='|--> inbyteorder({})\n'.format(self.inbyteorder)
+        v +='|--> outbyteorder({})\n'.format(self.outbyteorder)
         v +='|--> type({})\n'.format(self.type)
         v +='|--> mode({})\n'.format(self.mode)
         v +='|--> settings({})\n'.format(self.settings)
@@ -42,10 +42,10 @@ class DataFieldXML:
     
     def __str__(self):
         v  ='DataField {}({})\n'.format(self.name, self.size)
-        v +='|--> minValue({})\n'.format(self.minvalue)
-        v +='|--> maxValue({})\n'.format(self.maxvalue)
-        v +='|--> dataType({})\n'.format(self.type)
-        v +='|--> dataFormatType({})\n'.format(self.formattype)
+        v +='|--> minvalue({})\n'.format(self.minvalue)
+        v +='|--> maxvalue({})\n'.format(self.maxvalue)
+        v +='|--> type({})\n'.format(self.type)
+        v +='|--> formattype({})\n'.format(self.formattype)
         v +='|--> resolution({})\n'.format(self.resolution)
         return v
 
@@ -61,9 +61,9 @@ class EnumXML:
 
     def __str__(self):
         v  ='Enumeration {}({})\n'.format(self.name, self.size)
-        v +='|--> minValue({})\n'.format(self.minvalue)
-        v +='|--> maxValue({})\n'.format(self.maxvalue)
-        v +='|--> dataFormatType({})\n'.format(self.formattype)
+        v +='|--> minvalue({})\n'.format(self.minvalue)
+        v +='|--> maxvalue({})\n'.format(self.maxvalue)
+        v +='|--> formattype({})\n'.format(self.formattype)
         v +='|--> description({})\n'.format(self.description)
         return v
 
