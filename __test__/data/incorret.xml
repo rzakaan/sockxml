@@ -1,0 +1,7 @@
+<comm>
+    <interfaces name='interface'>
+        <interface bitOrder='Intel' inByteOrder='BigEndian' outByteOrder='LittleEndian' settings='127.0.0.0:8080' type='Tcp' mode='Server' name='MessageInputOutput' description="description for">
+            <packet name='MsgHeatBeat' rx='true' />
+            <packet name='MsgTest' tx='true' />
+        </interface>
+    </interfaces>

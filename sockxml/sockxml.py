@@ -42,7 +42,8 @@ class XMLReader:
             return conf
 
         except Exception as e:
-          print(e)
+            print("XMLReader::parse()\n{}\n".format(e))
+            return list()
 
 
     def __recursive_parse(self, element: ET.Element):
