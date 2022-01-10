@@ -14,7 +14,7 @@
   <img src="https://codecov.io/gh/sockxml/sockxml/branch/master/graph/badge.svg" />
 </a>
 
-![Test](https://github.com/rzakaan/sockxml/actions/workflows/pytest.yml/badge.svg)
+![Test](https://github.com/rzakaan/sockxml/actions/workflows/test.yml/badge.svg)
 
 XML Reader For Socket Code Generator
 </div>
