@@ -1,13 +1,19 @@
 name: Makefile CI        
 
 on:
-  workflow_run:
-    branches: [ main ]
-   
+  workflow_dispatch:
+    inputs:
+      version:
+        type: text
+        description: Tag Version
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: setup git config
+      run: git config user.name "GitHub Actions Bot"
+           git config user.email "rzakaan@gmail.com"
+    
     - name: checkout repo
       uses: actions/checkout@v2
     
