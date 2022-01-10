@@ -3,7 +3,7 @@ DIST="dist"
 BUILD="build"
 
 test:
-	python -m unittest sockxml __test__/main_test.py -v
+	python -m unittest __test__/main_test.py -v
 
 clean:
 	rm -rf $DIST
