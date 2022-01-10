@@ -1,3 +1,5 @@
+<div id="vscodium-logo" align="center">
+  
 # sockxml
 <a href="https://pypi.org/project/sockxml">
   <img src="https://img.shields.io/pypi/v/sockxml.svg" />
@@ -15,3 +17,4 @@
 ![Test](https://github.com/rzakaan/sockxml/actions/workflows/pytest.yml/badge.svg)
 
 XML Reader For Socket Code Generator
+</div>
