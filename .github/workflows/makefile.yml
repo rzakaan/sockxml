@@ -15,8 +15,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: set env
-      run: echo "LAST_TAG=$(echo git describe --tags)" >> $GITHUB_ENV
-    
+      run: echo "LAST_TAG=$(git describe --tags)" >> $GITHUB_ENV
+       
     # ${{ env.LAST_TAG }}
     - name: make
       run: |
