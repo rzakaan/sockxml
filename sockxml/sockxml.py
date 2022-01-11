@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 from typing import List
-from sockxml.model import *
+from sockxml.model import (InterfaceXML, InterfacePacketXML, DataFieldXML, EnumXML, EnumValueXML,
+                            RecordXML, RecordElementXML, MessageHeaderXML, MessageXML, SockXMLConfiguration)
+
 
 class XMLReader:
     def __init__(self):
@@ -45,7 +47,6 @@ class XMLReader:
             print("XMLReader::parse()\n{}\n".format(e))
             return None
 
-
     def __recursive_parse(self, element: ET.Element):
         if element.tag == "interfaces":
             self.interfaces = self.__read_interface(element)
@@ -58,13 +59,13 @@ class XMLReader:
 
         elif element.tag == "complexTypes":
             self.complextypes = self.__read_complex(element)
-        
+
         elif element.tag == "messageHeader":
             self.messageheader = self.__read_message_header(element)
 
         elif element.tag == "messages":
             self.messages = self.__read_message(element)
-        
+
         if element.tag in self.tags:
             # recursive function break
             return
@@ -77,10 +78,9 @@ class XMLReader:
         item_list = []
         for i in searched:
             item = MessageHeaderXML()
-            item.name = self.get_attr(i,'name')
+            item.name = self.get_attr(i, 'name')
             item.description = self.get_attr(i, 'description')
             item_list.append(item)
-
 
     def __read_interface(self, element: ET.Element) -> List[InterfaceXML]:
         searched = element.findall('interface')
@@ -88,7 +88,7 @@ class XMLReader:
         for i in searched:
             # set interface attributes
             item = InterfaceXML()
-            item.name = XMLReader.get_attr(i,'name')
+            item.name = XMLReader.get_attr(i, 'name')
             item.bitorder = XMLReader.get_attr(i, 'bitOrder')
             item.inbyteorder = XMLReader.get_attr(i, 'inByteOrder')
             item.outbyteorder = XMLReader.get_attr(i, 'outByteOrder')
@@ -109,7 +109,7 @@ class XMLReader:
             
         return item_list
 
-    def __read_datafield(self, element: ET.Element):        
+    def __read_datafield(self, element: ET.Element):
         searched = element.findall('data')
         item_list = []
         for i in searched:
@@ -126,13 +126,12 @@ class XMLReader:
             
         return item_list
 
-    
     def __read_enumeration(self, element: ET.Element):
         searched = element.findall('enum')
         item_list = []
         for i in searched:
             item = EnumXML()
-            item.name = self.get_attr(i,'name')
+            item.name = self.get_attr(i, 'name')
             item.size = self.get_attr(i, 'size')
             item.minvalue = self.get_attr(i, 'minValue')
             item.maxvalue = self.get_attr(i, 'maxValue')
@@ -150,7 +149,6 @@ class XMLReader:
             
         return item_list
     
-    
     def __read_complex(self, element: ET.Element):
         searched = element.findall('record')
         record_list = []
@@ -163,7 +161,7 @@ class XMLReader:
             elements = i.findall('element')
             for e in elements:
                 item = RecordElementXML()
-                item.name = self.get_attr(e,'name')
+                item.name = self.get_attr(e, 'name')
                 item.value = self.get_attr(e, 'value')
                 item.datatypename = self.get_attr(e, 'dataTypeName')
                 item.recordelementtype = self.get_attr(e, 'recordElementType')
@@ -171,7 +169,6 @@ class XMLReader:
                 record.elements.append(item)
 
         return record_list
-
 
     def __read_message_header(self, element: ET.Element) -> MessageHeaderXML:
         root = element.find('complex')
@@ -182,14 +179,13 @@ class XMLReader:
             if XMLReader.get_attr(i, 'recordType') == 'messageHeader':
                 for e in i.findall('element'):
                     item = RecordElementXML()
-                    item.name = XMLReader.get_attr(e,'name')
+                    item.name = XMLReader.get_attr(e, 'name')
                     item.datatypename = XMLReader.get_attr(e, 'dataTypeName')
                     item.recordelementtype = XMLReader.get_attr(e, 'recordElementType')
                     item.fieldtype = XMLReader.get_attr(e, 'fieldType')
                     header.records.append(item)
             
         return header
-
 
     def __read_message(self, element: ET.Element):
         searched = element.findall('message')
@@ -206,5 +202,5 @@ class XMLReader:
                 item.recordelementtype = self.get_attr(e, 'recordElementType')
                 item.fieldtype = self.get_attr(e, 'fieldType')
                 m.elements.append(item)
-        
+
         return messages
