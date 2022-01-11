@@ -7,7 +7,6 @@ class TestSockXML(unittest.TestCase):
     @classmethod
     def setup(cls):
         cls.TEST_DIR = os.path.join("__test__", 'data')
-
         cls.FILE_PATH = os.path.join(os.curdir, cls.TEST_DIR, "sock.xml")
         cls.INCORRET_FILE_PATH = os.path.join('.', cls.TEST_DIR, 'incorret.xml')
         cls.NOT_FOUND_FILE_PATH = os.path.join('.', 'unkown_file.xml')

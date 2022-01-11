@@ -82,7 +82,7 @@ class XMLReader:
             item_list.append(item)
 
 
-    def __read_interface(self, element: ET.Element) -> list[InterfaceXML]:
+    def __read_interface(self, element: ET.Element) -> List[InterfaceXML]:
         searched = element.findall('interface')
         item_list = []
         for i in searched:
@@ -173,7 +173,7 @@ class XMLReader:
         return record_list
 
 
-    def __read_message_header(element: ET.Element):
+    def __read_message_header(self, element: ET.Element) -> MessageHeaderXML:
         root = element.find('complex')
         searched = root.findall('record')
         header = MessageHeaderXML()

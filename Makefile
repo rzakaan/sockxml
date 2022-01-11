@@ -1,9 +1,9 @@
 PROJECT="sockxml"
 DIST="dist"
 BUILD="build"
-
-test:
-	python -m unittest __test__/main_test.py -v
+PY="python3"
+PIP="pip3"
+REQ="requirements.dev.txt"
 
 clean:
 	rm -rf $DIST
@@ -13,11 +13,20 @@ clean:
 	rm -rf *.egg
 	rm -rf *.egg-info
 
+setup:
+	${PIP} install -r ${REQ}
+
+test:
+	${PY} -m unittest __test__/main_test.py -v
+
+pylint:
+
+
 build:
-	python setup.py sdist bdist_wheel
+	${PY} setup.py sdist bdist_wheel
 
 test_publish:
-	python -m twine check dist/* && python -m twine upload --repository testpypi dist/*
+	${PY} -m twine check dist/* && python -m twine upload --repository testpypi dist/*
 
 publish:
-	python -m twine upload dist/*
+	${PY} -m twine upload dist/*
