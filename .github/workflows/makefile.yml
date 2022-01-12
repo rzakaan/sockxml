@@ -16,9 +16,14 @@ jobs:
           fetch-depth: 0
           
       - name: first fetch
-        id: version
         run: |
           git fetch --force
           git fetch --tags --force
           echo "VERSION=$(git tag --sort=committerdate | tail -1)" >> $GITHUB_ENV          
-          echo "::set-output name=version::$(git tag --sort=committerdate | tail -1)"
+          
+      - name: get version
+        id: version
+        run: echo "::set-output name=version::$(git tag --sort=committerdate | tail -1)"
+        
+      - name: print version
+        run: echo "${{ steps.version.outputs.version }}"
