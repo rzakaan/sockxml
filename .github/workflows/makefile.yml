@@ -11,10 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repo
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - run: |
+          
+      - name: fetching
+        run: |
           git fetch --unshallow --tags
           echo $?
           git tag --list
