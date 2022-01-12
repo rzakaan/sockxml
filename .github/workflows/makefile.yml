@@ -20,5 +20,5 @@ jobs:
         run: |
           git fetch --force
           git fetch --tags --force
-          echo ::set-output name=subject::$(git for-each-ref $GITHUB_REF --format='%(contents:subject)')
-          git tag --list
+          echo "VERSION=$(git tag --sort=committerdate | tail -1)" >> $GITHUB_ENV
+          echo ${{ env.VERSION }}
