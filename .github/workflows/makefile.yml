@@ -16,12 +16,9 @@ jobs:
           fetch-depth: 0
           
       - name: first fetch
+        id: tag
         run: |
           git fetch --force
           git fetch --tags --force
-      
-      - name: check tags
-        run: |
-          git fetch --unshallow --tags
-          echo $?
+          echo ::set-output name=subject::$(git for-each-ref $GITHUB_REF --format='%(contents:subject)')
           git tag --list
