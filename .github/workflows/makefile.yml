@@ -13,13 +13,9 @@ jobs:
     
     - name: checkout repo
       uses: actions/checkout@v2
-    
-    - run: git checkout HEAD^
-
-    - name: set env
-      run: echo "LAST_TAG=$(git describe --tags)" >> $GITHUB_ENV
-       
-    # ${{ env.LAST_TAG }}
-    - name: make
+      with:
+        fetch-depth: 0
       run: |
-        echo "::set-output name=my_value::$LAST_TAG"
+        git fetch --unshallow --tags
+        echo $?
+        git tag --list
