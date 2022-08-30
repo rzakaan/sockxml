@@ -2,7 +2,8 @@ import os
 import xml.etree.ElementTree as ET
 from typing import List
 from sockxml.model import (InterfaceXML, InterfacePacketXML, DataFieldXML, EnumXML, EnumValueXML,
-                            RecordXML, RecordElementXML, MessageHeaderXML, MessageXML, SockXMLConfiguration)
+                           RecordXML, RecordElementXML, MessageHeaderXML, MessageXML, SockXMLConfiguration)
+
 
 class XMLReader:
     def __init__(self):
@@ -107,7 +108,7 @@ class XMLReader:
             item.mode = XMLReader.get_attr(i, 'mode')
             item.description = XMLReader.get_attr(i, 'description')
             item_list.append(item)
-            
+
             # set packets
             packets = i.findall('packet')
             for p in packets:
@@ -116,7 +117,7 @@ class XMLReader:
                 pack.rx = XMLReader.get_attr(p, 'rx')
                 pack.tx = XMLReader.get_attr(p, 'tx')
                 item.packets.append(pack)
-            
+
         return item_list
 
     def __read_datafield(self, element: ET.Element):
@@ -124,7 +125,7 @@ class XMLReader:
         item_list = []
         for i in searched:
             item = DataFieldXML()
-            item.name = self.get_attr(i,'name')
+            item.name = self.get_attr(i, 'name')
             item.size = int(self.get_attr(i, 'size'))
             item.minvalue = self.get_attr(i, 'minValue')
             item.maxvalue = self.get_attr(i, 'maxValue')
@@ -133,7 +134,7 @@ class XMLReader:
             item.resolution = self.get_attr(i, 'resolution')
             item.description = self.get_attr(i, 'description')
             item_list.append(item)
-            
+
         return item_list
 
     def __read_enumeration(self, element: ET.Element):
@@ -148,7 +149,7 @@ class XMLReader:
             item.formattype = self.get_attr(i, 'dataFormatType')
             item.description = self.get_attr(i, 'description')
             item_list.append(item)
-            
+
             values = i.findall('value')
             for val in values:
                 v = EnumValueXML()
@@ -156,13 +157,13 @@ class XMLReader:
                 v.value = self.get_attr(val, 'enumValue')
                 v.description = self.get_attr(val, 'description')
                 item.values.append(v)
-            
+
         return item_list
-    
+
     def __read_complex(self, element: ET.Element):
         searched = element.findall('record')
         record_list = []
-        
+
         for i in searched:
             record = RecordXML()
             record.name = self.get_attr(i, 'name')
@@ -184,7 +185,7 @@ class XMLReader:
         root = element.find('complex')
         searched = root.findall('record')
         header = MessageHeaderXML()
-        
+
         for i in searched:
             if XMLReader.get_attr(i, 'recordType') == 'messageHeader':
                 for e in i.findall('element'):
@@ -194,7 +195,7 @@ class XMLReader:
                     item.recordelementtype = XMLReader.get_attr(e, 'recordElementType')
                     item.fieldtype = XMLReader.get_attr(e, 'fieldType')
                     header.records.append(item)
-            
+
         return header
 
     def __read_message(self, element: ET.Element):
