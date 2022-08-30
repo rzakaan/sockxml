@@ -1,8 +1,8 @@
+import os
 import xml.etree.ElementTree as ET
 from typing import List
 from sockxml.model import (InterfaceXML, InterfacePacketXML, DataFieldXML, EnumXML, EnumValueXML,
                             RecordXML, RecordElementXML, MessageHeaderXML, MessageXML, SockXMLConfiguration)
-
 
 class XMLReader:
     def __init__(self):
@@ -14,6 +14,16 @@ class XMLReader:
         self.complextypes = []
         self.messageheader = MessageHeaderXML()
         self.messages: List[MessageXML] = []
+
+    @staticmethod
+    def version():
+        try:
+            about = {}
+            with open(os.path.dirname(__file__) + "/__about__.py", "r", encoding="utf-8") as f:
+                exec(f.read(), about)
+                return about['__version__']
+        except Exception:
+            return "not valid"
 
     @staticmethod
     def attr_exists(element: ET.Element, attrib: str):

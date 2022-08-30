@@ -1,0 +1,8 @@
+__version__ = "0.0.7"
+__name__ = "sockxml"
+__title__ = "sockxml"
+__description__ = "XML Reader for Socket Code Generator"
+__url__ = "https://github.com/rzakaan/sockxml"
+__author__ = "Rıza Kaan Uçak"
+__email__ = "rzakaan@gmail.com"
+__license__ = "MIT"

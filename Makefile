@@ -1,5 +1,12 @@
 PROJECT="sockxml"
 
+ifeq (3.81, $(firstword $(sort $(MAKE_VERSION) 3.81)))
+    # stuff that requires make-3.81 or higher
+	.DEFAULT_GOAL := build
+else
+	.PHONY: build 
+endif
+
 # Directories
 DIST_DIR="dist"
 BUILD_DIR="build"
@@ -20,6 +27,7 @@ clean:
 	rm -rf *.pyc
 	rm -rf *.egg
 	rm -rf *.egg-info
+	find . -name "__pycache__" -exec rm -rf {} \;
 
 install:
 	${PIP} install -r ${REQ}
@@ -30,11 +38,11 @@ test:
 lint:
 	${PY} -m flake8 --ignore ${LINT_IGNORE} ${PROJECT}
 
-build:
+build: clean
 	${PY} setup.py sdist bdist_wheel
 
 publish_test:
-	${PY} -m twine check dist/* && python -m twine upload --repository testpypi dist/*
+	${PY} -m twine check dist/* && ${PY} -m twine upload --repository testpypi dist/*
 
 publish:
 	${PY} -m twine upload dist/*

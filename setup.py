@@ -1,27 +1,24 @@
 from setuptools import find_packages, setup
 import subprocess, os
 
+about = {}
+with open("sockxml/__about__.py") as f:
+    exec(f.read(), about)
+
 with open("README.md", "r", encoding="utf-8") as f:
     long_description = f.read()
 
-version= subprocess.run(["git", "describe", "--tags"], stdout=subprocess.PIPE).stdout.decode("utf-8").strip()
-assert "." in version
-
-assert os.path.isfile('sockxml/version.py')
-with open('sockxml/VERSION', 'w') as f:
-    f.write(f"{version}\n")
-
 setup(
-    version = version,
-    name = 'sockxml',
+    version = about['__version__'],
+    name = about['__name__'],
     packages = find_packages(),
-    description = 'XML Reader for Socket Code Generator',
+    description = about['__description__'],
     long_description = long_description,
     long_description_content_type="text/markdown",
-    url = 'https://github.com/rzakaan/sockxml',
-    author = 'Riza Kaan Ucak',
-    author_email = 'rzakaan@gmail.com',
-    license = 'MIT',
+    url = about['__url__'],
+    author = about['__author__'],
+    author_email = about['__email__'],
+    license = about['__license__'],
     classifiers=[
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
